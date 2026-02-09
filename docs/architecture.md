@@ -110,7 +110,7 @@ Each LangGraph node takes and mutates an `InvestigationState` accumulating findi
 
 ---
 
-*Last updated: YYYY-MM-DD*
+*Last updated: 2026-02-09*
 
 ## 8. Execution Modes
 
