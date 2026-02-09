@@ -1,0 +1,27 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# Environments
+.venv/
+.uv-cache/
+.env
+.env.*
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs & Reports
+data/logs/
+data/reports/
+logs/
+
+# Cache / Coverage
+*.log
+.cache/
+coverage/
+.pytest_cache/
