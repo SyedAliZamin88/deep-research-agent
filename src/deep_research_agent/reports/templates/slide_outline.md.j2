@@ -1,0 +1,98 @@
+# Slide 1 — Title
+- **Subject:** {{ subject }}
+- **Generated:** {{ generated_at }}
+- Objectives snapshot:
+{% if objectives %}
+  {% for objective in objectives %}
+  - {{ objective }}
+  {% endfor %}
+{% else %}
+  - No objectives captured.
+{% endif %}
+
+# Slide 2 — Executive Summary
+{% if summary %}
+- {{ summary }}
+{% else %}
+- No automated summary generated; craft a concise narrative of key insights.
+{% endif %}
+
+# Slide 3 — Investigation Plan & Scope
+- Plan highlights:
+{% if investigation_plan %}
+  {{ investigation_plan | truncate(900, True, ' …') }}
+{% else %}
+  - Planner output not available; summarize manual approach.
+{% endif %}
+- Unique findings collected: {{ findings | length }}
+- Leads in focus: {{ leads | length }}
+
+# Slide 4 — Validated Facts (Top Items)
+{% if validated_facts %}
+- Highlight strongest facts (confidence ≥ medium):
+  {% for fact in validated_facts | selectattr('confidence', 'in', ['high', 'medium']) | list | slice(0,5) %}
+  - {{ fact.fact }} (confidence: {{ fact.confidence }}, sources: {{ fact.unique_domains }})
+  {% endfor %}
+{% else %}
+- No validated facts recorded. Emphasize evidence gaps.
+{% endif %}
+
+# Slide 5 — Risk Landscape
+{% if risk_summary %}
+- Overall score: {{ '%0.2f'|format(risk_summary.overall_score) }}
+- Highest severity observed: {{ risk_summary.highest_severity | capitalize }}
+- Category distribution:
+  {% for category, score in risk_summary.category_breakdown.items() %}
+  - {{ category | capitalize }} — {{ '%0.2f'|format(score) }}
+  {% endfor %}
+{% else %}
+- Risk scoring unavailable; provide qualitative assessment.
+{% endif %}
+
+# Slide 6 — Key Risk Signals
+{% if risk_signals %}
+{% for signal in risk_signals | slice(0,6) %}
+- {{ signal.label }} ({{ signal.category | capitalize }}, severity {{ signal.severity }}, confidence {{ signal.confidence }}) — {{ signal.rationale }}
+{% endfor %}
+{% else %}
+- No discrete risk signals captured.
+{% endif %}
+
+# Slide 7 — Relationship Map Highlights
+{% if connection_graph.nodes %}
+- Nodes: {{ connection_graph.nodes | length }}, edges: {{ connection_graph.edges | length }}
+- Network density: {{ '%0.3f'|format(connection_graph.density) }}
+- Influential entities:
+  {% for node, score in connection_graph.centrality | dictsort(by='value', reverse=True) | slice(0,5) %}
+  - {{ node }} ({{ '%0.3f'|format(score) }})
+  {% endfor %}
+{% else %}
+- No relationship graph generated; describe known associations manually.
+{% endif %}
+
+# Slide 8 — Priority Follow-ups
+{% if leads %}
+- Immediate next steps:
+  {% for lead in leads | slice(0,6) %}
+  - {{ lead }}
+  {% endfor %}
+{% else %}
+- No new leads; recommend analyst-driven exploration.
+{% endif %}
+
+# Slide 9 — Source Quality & Coverage
+{% if source_quality %}
+- Unique domains: {{ source_quality.unique_domains | default(0) }}
+- Diversity score: {{ '%0.3f'|format(source_quality.diversity_score | default(0)) }}
+- Top domains:
+  {% for domain, count in source_quality.top_domains or [] %}
+  - {{ domain }} ({{ count }})
+  {% endfor %}
+{% else %}
+- Source diversity metrics unavailable.
+{% endif %}
+
+# Slide 10 — Appendix
+- Additional findings (full list in report bundle)
+- Methodology notes
+- Logs & audit trail: {{ logs | length }} entries (see JSON export)

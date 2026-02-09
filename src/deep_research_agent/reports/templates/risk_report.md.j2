@@ -1,0 +1,128 @@
+---
+title: Risk Assessment Report
+subject: {{ subject }}
+generated_at: {{ generated_at }}
+---
+
+# Executive Summary
+{% if summary %}{{ summary }}{% else %}No executive summary available. Summarize key findings manually.{% endif %}
+
+## Objectives
+{% if objectives %}
+{% for objective in objectives %}
+- {{ objective }}
+{% endfor %}
+{% else %}
+- No explicit objectives recorded.
+{% endif %}
+
+## Investigation Plan Highlights
+{% if investigation_plan %}
+{{ investigation_plan }}
+{% else %}
+No plan document captured. Review planner output.
+{% endif %}
+
+## Validated Facts
+{% if validated_facts %}
+| Fact | Confidence | Supporting Mentions | Unique Domains |
+| --- | --- | --- | --- |
+{% for fact in validated_facts %}
+| {{ fact.fact }} | {{ fact.confidence | capitalize }} | {{ fact.support_mentions }} | {{ fact.unique_domains }} |
+{% endfor %}
+{% else %}
+No validated facts available. Consider additional verification.
+{% endif %}
+
+## Risk Assessment
+{% if risk_summary %}
+**Overall Risk Score:** {{ '%0.2f' | format(risk_summary.overall_score) }}
+**Highest Severity:** {{ risk_summary.highest_severity | capitalize }}
+{% if risk_summary.category_breakdown %}
+### Risk by Category
+{% for category, score in risk_summary.category_breakdown.items() %}
+- **{{ category | capitalize }}:** {{ '%0.2f' | format(score) }}
+{% endfor %}
+{% endif %}
+{% else %}
+Risk summary unavailable.
+{% endif %}
+
+### Risk Signals
+{% if risk_signals %}
+{% for signal in risk_signals %}
+- **{{ signal.label }}** ({{ signal.category | capitalize }}, severity: {{ signal.severity }}, confidence: {{ signal.confidence }})
+  {{ signal.rationale }}{% if signal.supporting_facts %} Supported by: {{ signal.supporting_facts | join('; ') }}.{% endif %}{% if signal.sources %} Sources: {{ signal.sources | join(', ') }}.{% endif %}
+{% endfor %}
+{% else %}
+- No discrete risk signals recorded.
+{% endif %}
+
+## Relationship Map
+{% if connection_graph.nodes %}
+Total Nodes: {{ connection_graph.nodes | length }}
+Total Edges: {{ connection_graph.edges | length }}
+Network Density: {{ '%0.3f' | format(connection_graph.density) }}
+{% if connection_graph.centrality %}
+### Top Influential Entities
+{% for node, score in connection_graph.centrality | dictsort(by='value', reverse=True) | slice(0,5) %}
+- {{ node }} (centrality: {{ '%0.3f' | format(score) }})
+{% endfor %}
+{% endif %}
+{% else %}
+Relationship graph has not been constructed.
+{% endif %}
+
+### Resolved Entities
+{% if resolved_entities %}
+{% for entity in resolved_entities %}
+- **{{ entity.canonical_name }}** (score: {{ '%0.2f' | format(entity.score) }}){% if entity.aliases %} — aliases: {{ entity.aliases | join(', ') }}{% endif %}
+{% endfor %}
+{% else %}
+- No entity resolution results.
+{% endif %}
+
+## Recommended Next Steps
+{% if leads %}
+{% for lead in leads %}
+- {{ lead }}
+{% endfor %}
+{% else %}
+- No additional leads identified.
+{% endif %}
+
+## Source Findings
+{% if findings %}
+{% for finding in findings %}
+- **{{ finding.title }}**{% if finding.domain %} ({{ finding.domain }}){% endif %}{% if finding.url %}: [link]({{ finding.url }}){% endif %}
+  {{ finding.snippet }}
+{% endfor %}
+{% else %}
+- No findings captured.
+{% endif %}
+
+## Source Quality Snapshot
+{% if source_quality %}
+- Unique Domains: {{ source_quality.unique_domains | default(0) }}
+- Diversity Score: {{ '%0.3f' | format(source_quality.diversity_score | default(0)) }}
+{% if source_quality.top_domains %}
+### Top Domains
+{% for domain, count in source_quality.top_domains %}
+- {{ domain }} ({{ count }})
+{% endfor %}
+{% endif %}
+{% else %}
+Source quality metrics unavailable.
+{% endif %}
+
+## Workflow Log Excerpts
+{% if logs %}
+{% for entry in logs | slice(0,10) %}
+- {{ entry.event }} — {{ entry.payload }}
+{% endfor %}
+{% if logs | length > 10 %}
+- (Additional log entries truncated for brevity.)
+{% endif %}
+{% else %}
+- No logs were recorded during this run.
+{% endif %}
