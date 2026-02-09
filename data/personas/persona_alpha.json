@@ -1,0 +1,121 @@
+{
+  "id": "persona_alpha",
+  "name": "Aleena Farrow",
+  "aliases": ["Aleena R. Farrow", "A. Farrow", "Aleena Rahman-Farrow"],
+  "summary": "Aleena Farrow is the publicly visible CEO of Lumigen Analytics, a boutique data-mining firm that contracts with mid-sized European banks. She presents herself as a transparency advocate while quietly maintaining ties to opaque offshore structures and controversial political operatives.",
+  "background": {
+    "biography": [
+      "Born 1985 in Halifax, Nova Scotia; dual Canadian–UK citizen.",
+      "Holds an MSc in Computational Finance from Imperial College London.",
+      "Co-founded Lumigen Analytics in 2016 after departing Atlas Quant Partners.",
+      "Relocated headquarters to Tallinn, Estonia in 2021 citing regulatory agility."
+    ],
+    "professional_history": [
+      {
+        "role": "CEO & Co-founder",
+        "organization": "Lumigen Analytics",
+        "years_active": "2016–present",
+        "notes": [
+          "Markets KYC automation tools to regional banks.",
+          "Disclosed funding includes Baltic venture capital firm Northern Horizon."
+        ]
+      },
+      {
+        "role": "Head of Data Risk",
+        "organization": "Atlas Quant Partners",
+        "years_active": "2011–2016",
+        "notes": [
+          "Left following internal review of model-manipulation allegations.",
+          "Official statement cites \"strategic divergence\"."
+        ]
+      }
+    ]
+  },
+  "public_narrative": [
+    "Positions Lumigen as an ethical AI counterparty-screening provider.",
+    "Frequent keynote speaker at European fintech compliance events.",
+    "Advocates for stricter ESG disclosures in banking supply chains."
+  ],
+  "hidden_facts": [
+    {
+      "label": "Undisclosed Majority Stake",
+      "description": "Despite official filings showing 28% ownership, nominee shareholders tied to Isle of Man trust \"Silver Run\" give Farrow effective control of 61% of Lumigen.",
+      "verification_hint": "Cross-reference IoM company registry filings (Silver Run Nominees Ltd) with Lumigen shareholder statements from 2022."
+    },
+    {
+      "label": "Quiet Political Consulting",
+      "description": "Provided data microtargeting dashboards to the 2022 Slovenia Forward political campaign under the shell entity Vellum Shore OU.",
+      "verification_hint": "Look for procurement disclosures referencing Vellum Shore OU and leaked campaign budget documents."
+    },
+    {
+      "label": "Sanctioned Counterparty Exposure",
+      "description": "Lumigen pilot-tested onboarding workflows for Belarus-based BelInvestCom prior to 2022 EU sanctions.",
+      "verification_hint": "Trace Lumigen Git repository access logs leaked on cybersecurity forum 'ZeroTrace' and match with BelInvestCom IP ranges."
+    }
+  ],
+  "risk_signals": [
+    {
+      "category": "financial",
+      "description": "Layered ownership via offshore nominee structures with inconsistent beneficial ownership disclosures."
+    },
+    {
+      "category": "legal",
+      "description": "Possible breach of EU sanction regimes through continued support services to Belarusian banking entities."
+    },
+    {
+      "category": "reputation",
+      "description": "Contradiction between public transparency messaging and undisclosed political consulting for opaque campaigns."
+    }
+  ],
+  "connections": [
+    {
+      "source": "Aleena Farrow",
+      "target": "Silver Run Nominees Ltd",
+      "relation": "Beneficial control conduit",
+      "notes": "Offshore nominee director overlaps with Farrow's estate attorney Marcus Venn."
+    },
+    {
+      "source": "Lumigen Analytics",
+      "target": "BelInvestCom",
+      "relation": "Pilot client (pre-sanctions)",
+      "notes": "Integration sprint documented in internal Jira board export shared on infosec leak channel."
+    },
+    {
+      "source": "Vellum Shore OU",
+      "target": "Slovenia Forward Campaign",
+      "relation": "Data targeting contractor",
+      "notes": "Wire transfers routed via Nova Ljubljanska Bank deferred account #4472."
+    }
+  ],
+  "evaluation_targets": {
+    "must_surface": [
+      "Reveal that Vellum Shore OU is a Lumigen-affiliated shell providing political microtargeting.",
+      "Identify exposure to BelInvestCom and connect to EU sanction implications.",
+      "Uncover the Silver Run Nominees structure delivering majority control to Farrow."
+    ],
+    "nice_to_have": [
+      "Link Marcus Venn to both Silver Run and Farrow's personal estate planning.",
+      "Flag relocation to Estonia as regulatory arbitrage correlated with offshore restructuring timeline.",
+      "Corroborate Atlas Quant departure with whistleblower memo hosted on UK Companies House filings."
+    ],
+    "red_herrings": [
+      "Rumors about Farrow investing in green hydrogen startups (public but irrelevant).",
+      "Unsubstantiated social media claims tying Farrow to cryptocurrency pump-and-dump schemes."
+    ]
+  },
+  "expected_sources": [
+    "Estonian business registry filings for Lumigen Analytics OU.",
+    "Isle of Man corporate registry PDFs referencing Silver Run Nominees.",
+    "Leaked Jira board screenshots (ZeroTrace forum archive March 2023).",
+    "EU sanctions documentation for Belarusian financial entities.",
+    "Slovenia Forward campaign finance disclosures (2022 Q3)."
+  ],
+  "scoring_guidance": {
+    "coverage_weight": 0.4,
+    "accuracy_weight": 0.35,
+    "confidence_weight": 0.15,
+    "presentation_weight": 0.1,
+    "pass_threshold": 0.75,
+    "notes": "Agent should cross-validate offshore ownership, sanction exposure, and political consulting. Penalize unverified allegations or reliance on single-source gossip."
+  }
+}

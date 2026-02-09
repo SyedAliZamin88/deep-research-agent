@@ -1,0 +1,120 @@
+{
+  "id": "persona_gamma",
+  "name": "Dr. Naomi Kwan",
+  "aliases": ["Naomi J. Kwan", "N. Kwan", "Dr. N. Jian Kwan"],
+  "summary": "Dr. Naomi Kwan is a Singapore-based biomedical entrepreneur credited with pioneering affordable gene-therapy distribution in Southeast Asia. Public filings portray her as a mission-driven scientist funding community health clinics, yet internal correspondence and export records suggest covert collaborations with military research programs, non-compliant data brokerage, and supply chains that intersect with sanctioned genomic surveillance regimes.",
+  "background": {
+    "biography": [
+      "Born 1982 in Kuala Lumpur, Malaysia; naturalized Singaporean citizen in 2009.",
+      "PhD in Molecular Systems Biology from the University of Cambridge (2008).",
+      "Held a postdoctoral fellowship at the Broad Institute before founding SynPlex Therapeutics in 2014."
+    ],
+    "professional_history": [
+      {
+        "role": "Founder & Chief Science Officer",
+        "organization": "SynPlex Therapeutics",
+        "years_active": "2014–present",
+        "notes": [
+          "Focuses on modular viral vector platforms for rare disease therapies.",
+          "Raised Series C funding led by Horizon Sovereign Fund in 2023."
+        ]
+      },
+      {
+        "role": "Consultant Geneticist",
+        "organization": "ASEAN Public Health Innovation Taskforce",
+        "years_active": "2010–2013",
+        "notes": [
+          "Co-authored regional genomics guidelines for outbreak preparedness.",
+          "Dismissed after whistleblower reported undisclosed side contracts with private defense labs."
+        ]
+      }
+    ]
+  },
+  "public_narrative": [
+    "Presented as a champion of equitable gene therapy access across emerging markets.",
+    "Speaks regularly at WHO gene editing ethics panels.",
+    "Promotes SynPlex’s proprietary cold-chain solution as carbon neutral and community oriented."
+  ],
+  "hidden_facts": [
+    {
+      "label": "PLA Joint Research Program",
+      "description": "Co-developed respiratory enhancement vectors with Tianjin Defense Biologics Laboratory (linked to the People's Liberation Army) under the code-name Project Meridian, violating Singapore’s Export Control Act.",
+      "verification_hint": "Inspect 2019–2021 shipping manifests filed with Singapore Customs referencing laboratory equipment HS code 841989 annotated with recipient 'TDBL Research Unit 43'."
+    },
+    {
+      "label": "Genomic Data Brokerage",
+      "description": "Brokered anonymized patient genomes harvested from rural Indonesian clinics to data analytics firm Helios Spectrum for USD 12.5M without patient consent.",
+      "verification_hint": "Cross-reference Helios Spectrum SEC Schedule 13D footnotes (2022) with leaked SynPlex revenue reconciliation spreadsheets (folder 'HeliosDeal_final.xlsx')."
+    },
+    {
+      "label": "Sanctioned Procurement Network",
+      "description": "Contracted Myanmar-based front company Radiant Mornings Co. to source CRISPR delivery peptides later flagged for transfer to the Tatmadaw’s Directorate of Defence Industries despite EU and UK sanctions.",
+      "verification_hint": "Review 2021 UN Panel of Experts annex listing Radiant Mornings transactions and corroborate with SynPlex purchase order logs (PO-7742 through PO-7761)."
+    }
+  ],
+  "risk_signals": [
+    {
+      "category": "national_security",
+      "description": "Collaborations with foreign military-affiliated laboratories in strategic dual-use biotechnology."
+    },
+    {
+      "category": "privacy",
+      "description": "Commercialization of patient genomic data absent informed consent and outside declared jurisdictions."
+    },
+    {
+      "category": "sanctions",
+      "description": "Procurement flows relying on Myanmar front companies already cited in sanctions enforcement bulletins."
+    }
+  ],
+  "connections": [
+    {
+      "source": "Dr. Naomi Kwan",
+      "target": "Tianjin Defense Biologics Laboratory",
+      "relation": "Covert R&D partner",
+      "notes": "Shared patent draft 'Adeno Vector Stability Enhancements' recovered from 2020 email leak (file hash 9d7cfa...)."
+    },
+    {
+      "source": "SynPlex Therapeutics",
+      "target": "Helios Spectrum Analytics",
+      "relation": "Genomic data licensing counterparty",
+      "notes": "Revenue line item 'Project Helios' appears in SynPlex Q2 2022 board packet, matching Helios Spectrum acquisition term sheet."
+    },
+    {
+      "source": "Radiant Mornings Co.",
+      "target": "Tatmadaw Directorate of Defence Industries",
+      "relation": "Brokered biotech materials",
+      "notes": "UN Panel of Experts report (2022 Annex IV) cites Radiant Mornings shipping CRISPR reagents to DDI facility in Pyin Oo Lwin."
+    }
+  ],
+  "evaluation_targets": {
+    "must_surface": [
+      "Expose the SynPlex–Tianjin Defense Biologics Laboratory collaboration and its regulatory implications.",
+      "Document unauthorized genomic data sales to Helios Spectrum.",
+      "Link Radiant Mornings Co. procurement to sanctioned Myanmar military programs."
+    ],
+    "nice_to_have": [
+      "Identify Horizon Sovereign Fund’s strategic stake as a motive for dual-use research expansion.",
+      "Highlight conflicts between WHO ethics panel statements and undisclosed military partnerships.",
+      "Trace how ASEAN Taskforce dismissal corresponded with early Project Meridian milestones."
+    ],
+    "red_herrings": [
+      "Blog rumors alleging Dr. Kwan’s involvement in cryptocurrency pump schemes.",
+      "Speculative claims that SynPlex is planning an IPO on the London Stock Exchange (no filings exist)."
+    ]
+  },
+  "expected_sources": [
+    "Singapore Customs export filings (2019–2021) referencing TDBL shipments.",
+    "Leaked SynPlex internal finance packets (Q2 2022) stored in 'HeliosDeal_final.xlsx'.",
+    "UN Panel of Experts on Myanmar report (2022) Annex IV transaction logs.",
+    "WHO ethics panel transcripts (Geneva 2021) for public statements versus internal actions.",
+    "Helios Spectrum SEC Schedule 13D and acquisition disclosure footnotes."
+  ],
+  "scoring_guidance": {
+    "coverage_weight": 0.38,
+    "accuracy_weight": 0.37,
+    "confidence_weight": 0.15,
+    "presentation_weight": 0.1,
+    "pass_threshold": 0.8,
+    "notes": "To pass, the agent must link Kwan to dual-use research, non-consensual data monetization, and sanctioned procurement; scoring rewards corroborated evidence chains and penalizes reliance on hearsay."
+  }
+}

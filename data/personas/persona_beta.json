@@ -1,0 +1,124 @@
+{
+  "id": "persona_beta",
+  "name": "Victor Delgado",
+  "aliases": [
+    "Víctor Manuel Delgado",
+    "V. M. Delgado",
+    "Victor M. Delgado-Santos"
+  ],
+  "summary": "Victor Delgado is a Madrid-based infrastructure financier who positions himself as a bridge between Iberian renewable projects and Latin American development capital. Publicly he is celebrated for championing ESG-linked transportation initiatives, yet his track record includes opaque procurement deals, preferential lending to politically exposed persons, and quiet ownership in logistics firms implicated in customs fraud.",
+  "background": {
+    "biography": [
+      "Born 1978 in Seville, Spain; dual Spanish–Panamanian citizen.",
+      "Holds an MBA from IESE Business School and a civil engineering degree from Universidad de Sevilla.",
+      "Founded Meridian Axial Partners (MAP) in 2014 after a decade at Iberia Infrastructure Bank."
+    ],
+    "professional_history": [
+      {
+        "role": "Managing Partner",
+        "organization": "Meridian Axial Partners",
+        "years_active": "2014–present",
+        "notes": [
+          "Specializes in structuring public–private partnerships across Southern Europe and Latin America.",
+          "Marketed as an ESG-first boutique with €3.2B AUM."
+        ]
+      },
+      {
+        "role": "Director of Structured Finance",
+        "organization": "Iberia Infrastructure Bank",
+        "years_active": "2005–2014",
+        "notes": [
+          "Oversaw transport corridor financings in Argentina, Peru, and Spain.",
+          "Departed following internal probe into irregular success fees related to highway concessions."
+        ]
+      }
+    ]
+  },
+  "public_narrative": [
+    "Frequent keynote speaker at EU Green Mobility forums.",
+    "Advisory board member for the Iberian Climate Infrastructure Council.",
+    "Promotes transparency dashboards for PPP projects via MAP Insights portal."
+  ],
+  "hidden_facts": [
+    {
+      "label": "Shadow Stake in Cargo Nexus",
+      "description": "Maintains a 22% undisclosed interest in Cargo Nexus Logistics via bearer shares held by Darien Ridge Holdings (Panama), a firm repeatedly flagged for customs valuation fraud at the Port of Valencia.",
+      "verification_hint": "Cross-match Panamanian corporate registries (2018 amendments) with leaked Port Authority audits referencing Cargo Nexus."
+    },
+    {
+      "label": "Political Lending Channel",
+      "description": "Arranged bridge financing for Mexico’s Camino Verde light-rail project through shell lender Calix Mercantile, ultimately channeling €18M in kickbacks to Nuevo León governor’s aides.",
+      "verification_hint": "Evaluate Mexican SAT whistleblower filings (Case MX-21-447) and subpoenaed Calix Mercantile bank statements leaked in 2022."
+    },
+    {
+      "label": "Sanction Circumvention Advisory",
+      "description": "Secretly advised Venezuelan state-owned logistics firm BolivarTrans in 2020 on rerouting payments through Portuguese fintech EvoraPay despite EU sanctions.",
+      "verification_hint": "Track EvoraPay transaction metadata (FinCEN leak subset 4F) aligning with BolivarTrans purchase orders."
+    }
+  ],
+  "risk_signals": [
+    {
+      "category": "financial",
+      "description": "Layered offshore vehicles enabling undisclosed control of logistics assets tied to customs fraud."
+    },
+    {
+      "category": "legal",
+      "description": "Potential bribery and anti-corruption exposure via Camino Verde financing structure."
+    },
+    {
+      "category": "sanctions",
+      "description": "Advisory work designed to circumvent EU sanctions on Venezuelan entities."
+    }
+  ],
+  "connections": [
+    {
+      "source": "Victor Delgado",
+      "target": "Darien Ridge Holdings",
+      "relation": "Beneficial owner",
+      "notes": "Bearer shares registered through Panamanian lawyer Amelia Santamaría; proxy director overlaps with Cargo Nexus board."
+    },
+    {
+      "source": "Meridian Axial Partners",
+      "target": "Calix Mercantile Ltd",
+      "relation": "Bridge lender",
+      "notes": "MAP internal memos (June 2021) show Delgado instructed Calix to invoice consulting fees masking political payments."
+    },
+    {
+      "source": "EvoraPay",
+      "target": "BolivarTrans",
+      "relation": "Payment routing facilitator",
+      "notes": "EvoraPay compliance ticket #EVP-00279 lists Delgado’s MAP email as escalation contact."
+    }
+  ],
+  "evaluation_targets": {
+    "must_surface": [
+      "Connect Darien Ridge Holdings to Delgado’s concealed stake in Cargo Nexus.",
+      "Document Camino Verde kickback mechanism involving Calix Mercantile and Nuevo León officials.",
+      "Expose EvoraPay advisory role enabling BolivarTrans sanctions evasion."
+    ],
+    "nice_to_have": [
+      "Link Iberia Infrastructure Bank probe findings to subsequent MAP project vetting gaps.",
+      "Identify Amelia Santamaría as nominee director across Delgado-controlled shell entities.",
+      "Correlate EU Green Mobility appearances with lobbying for favorable PPP scoring criteria."
+    ],
+    "red_herrings": [
+      "Press rumors about Delgado purchasing a La Liga football club (speculative and unverified).",
+      "Old blog posts alleging Delgado’s involvement in cryptocurrency mining (no credible evidence)."
+    ]
+  },
+  "expected_sources": [
+    "Panama Public Registry filings (Darien Ridge Holdings amendments 2018–2020).",
+    "Spanish Port Authority investigative report on Cargo Nexus (Valencia Customs Audit 2021).",
+    "Mexican SAT whistleblower dossier MX-21-447 (Camino Verde).",
+    "FinCEN files leak segment 4F referencing EvoraPay.",
+    "EU Parliament transcript on PPP transparency (Session 2022-04-19)."
+  ],
+  "scoring_guidance": {
+    "coverage_weight": 0.35,
+    "accuracy_weight": 0.4,
+    "confidence_weight": 0.15,
+    "presentation_weight": 0.1,
+    "pass_threshold": 0.78,
+    "notes": "Success requires tracing ownership chains, validating sanction evasion assistance, and differentiating substantiated corruption evidence from media speculation."
+  }
+}
