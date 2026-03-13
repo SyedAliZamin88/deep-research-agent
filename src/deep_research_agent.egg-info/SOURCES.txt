@@ -34,7 +34,9 @@ src/deep_research_agent/llm_providers/factory.py
 src/deep_research_agent/llm_providers/gemini_client.py
 src/deep_research_agent/llm_providers/ollama_client.py
 src/deep_research_agent/llm_providers/openai_client.py
+src/deep_research_agent/observability/metrics.py
 src/deep_research_agent/observability/openinference.py
+src/deep_research_agent/observability/prometheus_metrics.py
 src/deep_research_agent/reports/__init__.py
 src/deep_research_agent/reports/report_builder.py
 src/deep_research_agent/search/__init__.py

@@ -18,6 +18,9 @@ google-search-results>=2.4.2
 tavily-python>=0.3.2
 beautifulsoup4>=4.12.3
 ddgs>=1.0.0
+fastapi>=0.135.1
+uvicorn>=0.41.0
+prometheus-client>=0.24.1
 
 [dev]
 pytest>=8.1.1

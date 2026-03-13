@@ -2,7 +2,7 @@ Metadata-Version: 2.4
 Name: deep-research-agent
 Version: 0.1.0
 Summary: Autonomous deep research and risk assessment agent
-Author-email: Your Name <you@example.com>
+Author-email: Your Name <syedalizamin88@gmail.com>
 License: Proprietary
 Requires-Python: <3.13,>=3.12
 Description-Content-Type: text/markdown
@@ -26,6 +26,9 @@ Requires-Dist: google-search-results>=2.4.2
 Requires-Dist: tavily-python>=0.3.2
 Requires-Dist: beautifulsoup4>=4.12.3
 Requires-Dist: ddgs>=1.0.0
+Requires-Dist: fastapi>=0.135.1
+Requires-Dist: uvicorn>=0.41.0
+Requires-Dist: prometheus-client>=0.24.1
 Provides-Extra: openai
 Requires-Dist: openai>=1.12.0; extra == "openai"
 Provides-Extra: gemini
@@ -49,40 +52,164 @@ Requires-Dist: mypy>=1.9.0; extra == "dev"
 Requires-Dist: pre-commit>=3.7.0; extra == "dev"
 Requires-Dist: respx>=0.20.2; extra == "dev"
 
-# Deep Research Agent
+# Deep Research AI Agent
 
 ## Overview
-Autonomous research agent that performs deep due-diligence style investigations, uncovers hidden connections, and produces risk assessments.
+Deep Research AI Agent is an autonomous research system capable of conducting thorough investigations on individuals or entities to uncover hidden connections, potential risks, and strategic insights. It integrates multiple AI models, supports dynamic search query refinement, and includes a robust observability stack to monitor telemetry and tracing.
 
-## Features (planned)
-- Multi-model orchestration (OpenAI, Gemini, Llama)
-- Dynamic search and query refinement workflow
-- Entity resolution, risk scoring, and connection graphing
-- Source validation with confidence scoring
-- Structured reporting and evaluation harness
+## Features
+- **Multi-model AI orchestration:** Supports OpenAI, Google Gemini, and Ollama LLaMA models.
+- **Dynamic Query Refinement:** Agent adapts search strategies based on newly discovered leads.
+- **Deep Fact Extraction & Risk Recognition**
+- **Connection Mapping & Source Validation**
+- **Observability Stack:** Integrated metrics and tracing via Prometheus, Jaeger, and Grafana.
+- **Evaluation Harness:** Test personas for assessing AI research quality.
+
+---
+
+## Prerequisites
+- Python 3.12+
+- Node.js 18+
+- Docker Desktop (for running observability stack)
+- API keys for preferred AI models (OpenAI, Google Gemini, Tavily, etc.)
+
+---
 
 ## Getting Started
-1. Install Python 3.12 (already done).
-2. Install `uv` (already done).
-3. Clone/download this repository.
-4. Run `python -m uv sync` to install dependencies.
-5. Copy `.env.example` to `.env` and populate API keys.
 
-## Project Layout
-(Will be detailed once modules are implemented.)
+### 1. Clone the Repository
+```bash
+git clone <your_repo_url>
+cd deep-research-agent
+```
 
+### 2. Setup Python Environment and Install Dependencies
+```bash
+python -m venv .venv
+# On Windows:
+.venv\Scripts\activate
+# On Unix/Mac:
+source .venv/bin/activate
 
-## Next Steps
+pip install -U pip
+pip install -e ".[observability,dev]"
+```
 
-- Implement configuration and logging modules.
+### 3. Setup Frontend Dependencies
+```bash
+cd frontend
+npm install
+cd ..
+```
 
-- Build LangGraph orchestration.
+### 4. Configure Environment Variables
+- Copy `.env.example` to `.env`:
+```bash
+copy .env.example .env     # Windows PowerShell
+# or
+cp .env.example .env       # Unix/Mac
+```
+- Edit `.env` and provide your API keys (Get keys from your platform):
 
-- Define evaluation personas and reporting flow.
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+GOOGLE_API_KEY=your_google_gemini_key_here
+TAVILY_API_KEY=your_tavily_key_here
+SERPAPI_API_KEY=your_serpapi_key_here
+LLAMA_MODEL_PATH=            # if using LLaMA locally
+DEFAULT_SEARCH_ENGINE=tavily
+OTEL_SERVICE_NAME=deep-research-agent
+COST_PER_1K_OPENAI=0.03
+COST_PER_1K_GEMINI=0.03
+```
 
-## Testing with LLaMA and Free Web Search
-1. Install and run [Ollama](https://ollama.com) locally, ensuring the target model (for example `llama3`) is pulled and the service is listening on `http://localhost:11434`.
-2. Update `.env` to point `LLAMA_MODEL_PATH` to your local model directory and set `DEFAULT_SEARCH_ENGINE=web` so the agent relies on the built-in DuckDuckGo scraper instead of paid APIs.
-3. Trigger a dry run such as:<br>`python -m uv run python scripts/run_agent.py "Persona Alpha" --objective "Surface hidden ownership" --objective "Flag regulatory risks" --planner-provider ollama --extraction-provider ollama --reporting-provider ollama --search-provider web --search-results-per-query 4`
-4. Review the generated Markdown report and JSON state under `data/reports/` to confirm validated facts, risk signals, and connection summaries match expectations before switching to paid providers.
+### 5. Start Backend API Server
+```bash
+uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
+```
 
+### 6. Start Frontend Dev Server (In a new terminal)
+```bash
+cd frontend
+npm run dev
+```
+- Access UI at: http://localhost:5173
+
+### 7. Start Observability Stack with Docker Compose
+```bash
+docker compose up -d
+```
+This brings up:
+- **Jaeger:** Tracing UI at http://localhost:16686
+- **Prometheus:** Metrics UI at http://localhost:9090
+- **Grafana:** Dashboard UI at http://localhost:3000  (default admin/admin or admin1/admin1)
+
+Use `docker ps` to verify containers are running.
+
+### 8. Run Investigations in UI
+- Provide subject and objectives (default sample persona `Aleena Farrow` provided)
+- Select at least two LLM models and a search provider.
+- Click **Run Investigation**
+- Watch live Activity Logs, Queries, Results, Connection Graph, and Telemetry panels.
+
+### 9. View Metrics & Traces
+- **Jaeger UI:** View request traces, node spans, and LLM call timings.
+- **Prometheus UI:** Query metrics such as `llm_calls_total`, `llm_tokens_total`, `llm_cost_usd_total`.
+- **Grafana UI:** View dashboards visualizing metrics and costs live.
+
+### 10. Run Evaluation Harness
+```bash
+python scripts/evaluate_personas.py
+```
+- Automatically runs investigations on predefined personas.
+- Generates detailed JSON reports and scoring summaries.
+
+---
+
+## Directory Structure
+
+| Directory/File                | Description                                       |
+|------------------------------|-------------------------------------------------|
+| `api/`                       | Backend API and server                            |
+| `data/personas/`             | Test personas with hidden facts                   |
+| `data/reports/`              | Generated investigation reports                   |
+| `frontend/`                  | React frontend UI                                |
+| `scripts/`                   | Utility scripts (evaluation, metrics emit)       |
+| `src/deep_research_agent/`   | Core agent code, AI providers, observability     |
+| `docker-compose.yml`         | Observability stack compose file                  |
+| `prometheus.yml`             | Prometheus scrape config                          |
+| `otel-collector-config.yaml` | OpenTelemetry Collector config (optional)        |
+| `.env.example`               | Environment variable template                     |
+| `README.md`                  | This README                                       |
+
+---
+
+## Notes & Tips
+
+- Make sure API keys in `.env` are valid for best results.
+- The backend binds to all interfaces at host 0.0.0.0 for Prometheus scraping.
+- Use the `scripts/emit_metric.py` to generate test metrics manually.
+- Grafana dashboards can be created via UI or import JSON (ask for dashboard JSON if needed).
+- For fast demos, use the UI and observe live telemetry panels and Jaeger traces.
+- The system supports fallback search providers for zero-cost testing.
+
+---
+
+## Troubleshooting
+
+- Backend startup errors: ensure Python packages installed (`pip install -e ".[observability,dev]"`).
+- Prometheus not scraping backend: check `prometheus.yml` targets and backend bind IP (`0.0.0.0`).
+- Docker networking: ensure Prometheus can reach backend IP; adjust `prometheus.yml` target accordingly.
+- Container conflicts: use `docker ps` and `docker rm -f <container>` to clear stale containers.
+- Telemetry missing: run investigations or `scripts/emit_metric.py` to inject fake load.
+- UI errors: check browser console and backend logs for details.
+
+---
+
+## Contact & Support
+
+For questions or help preparing your demo, please reach out at your convenience.
+
+---
+
+*Last updated: `2026-02-09`*
